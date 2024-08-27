@@ -1,0 +1,21 @@
+CREATE TABLE medicos (
+    crm FLOAT PRIMARY KEY AUTO_INCREMENT,
+    nome_medico VARCHAR(100),
+    especialidade VARCHAR(100)
+);
+
+CREATE TABLE especialidades (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    especialidade VARCHAR(100) NOT NULL,
+    crm FLOAT,
+    FOREIGN KEY (crm) REFERENCES medicos(crm)
+);
+
+CREATE TABLE disponibilidade (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    crm FLOAT,
+    data DATE NOT NULL,
+    hora TIME NOT NULL,
+    disponivel BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (crm) REFERENCES medicos(crm)
+);
